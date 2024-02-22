@@ -179,36 +179,210 @@
   }
 
 
-
-
-
-
-
-
 .card1 {  
   transition:.6s;
-  transform: rotatex(75deg) translatey(-200px) translatez(-100px);
   box-shadow: 0px 20px 60px rgba(0,0,0, 0.5);
-  height: 50px;
+  height: 160px;
 
 }
-.card1:hover{
+.card1{
   transform: rotatex(0deg);
   transform: rotatez(0deg);
   transition:.6s;
   box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.3);
  
 }
+
+
+
 .card1 > img{
   transform: translateY(15px);
-  height:220px;
-  display: none;
-}
-
-
-.card1:hover > img{
-  transform: translateY(15px);
-  width:200px;
-  height:120px;
+  width:60px;
+  height:60px;
   display: block;
 }
+
+
+
+
+
+:root {
+  --white: rgb(224, 224, 224);
+  --top-part-color: rgb(238, 64, 53);
+  --bottom-part-color: rgb(236, 236, 236);
+  --middle-part-color: rgb(88, 88, 90);
+  --button-color: rgb(178, 177, 178);
+  --pokeball-size: 10rem;
+  --opening-time: 0.3s;
+}
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  color: inherit;
+}
+body {
+  background-color: rgb(68, 68, 68);
+  font-family: Arial, Helvetica, sans-serif;
+}
+button {
+  color: inherit;
+  border: none;
+  cursor: pointer;
+}
+button:hover {
+  transform: scale(1.1);
+}
+h1 {
+  margin: 3% 0;
+  color: var(--white);
+  font-size: 3rem;
+  text-align: center;
+}
+.starters {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  padding: 3%;
+}
+.starter-container {
+  color: var(--white);
+}
+
+
+.pokeball {
+  cursor: pointer;
+  position: relative;;
+  width: var(--pokeball-size);
+  height: var(--pokeball-size);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 5% auto;
+  border: 0.5rem solid var(--middle-part-color);
+  border-radius: 50%;
+  transform-origin: 50% 100%;
+}
+
+.top-part {
+  flex: 1;
+  background: var(--top-part-color) linear-gradient(150deg, rgba(255,255,255,0.2) 0%, rgba(0,0,0,0.2) 40%, rgba(0,0,0,0.2) 100%);
+}
+.bottom-part {
+  flex: 1;
+  background: var(--bottom-part-color) linear-gradient(150deg, rgba(255,255,255,0.2) 0%, rgba(0, 0, 0, 0.2) 80%, rgba(0,0,0,0.2) 100%);
+}
+.middle-part {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 5%;
+  margin: auto;
+  background-color: var(--middle-part-color);
+}
+.middle-circle {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  --size: 35%;
+  width: var(--size);
+  height: var(--size);
+  margin: auto;
+  background-color: var(--middle-part-color);
+  border-radius: 50%;
+}
+.pokeball-button {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  --size: 100%;
+  width: var(--size);
+  height: var(--size);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+  background: var(--bottom-part-color) linear-gradient(150deg, rgba(255,255,255,0.2) 0%, rgba(0, 0, 0, 0.2) 80%, rgba(0,0,0,0.2) 100%);
+  border-radius: 50%;
+  transition-property: width height;
+  transition: var(--opening-time) ease-in;
+}
+.starter-container.active .pokeball-button {
+  --size: 25%;
+}
+.starter-image {
+  --size: 0%;
+  --final-size: 50%;
+  width: var(--size);
+  height: var(--size);
+}
+.starter-container.active .starter-image {
+  display: none;
+}
+.starter-container .starter-image {
+  animation: pokemon-reveal 0.3s var(--opening-time) ease-in forwards;
+}
+.pokemon-name {
+  opacity: 0;
+  text-align: center;
+}
+.starter-container.active .pokemon-name {
+  display: none
+}
+.starter-container .pokemon-name {
+  animation: name-reveal 0.6s var(--opening-time) ease-in forwards;
+}
+@keyframes pokemon-reveal {
+  0% {
+      width: 0%;
+      height: 0%;
+  }
+  100% {
+      width: var(--final-size);
+      height: var(--final-size);
+  }
+}
+@keyframes name-reveal {
+  0% {
+      opacity: 0;
+  }
+  100% {
+      opacity: 1;
+  }
+}
+@keyframes float {
+  0% {
+      transform: translateY(10%);
+  }
+  50% {
+      transform: translateY(-10%);
+  }
+  100% {
+      transform: translateY(10%);
+  }
+}
+@keyframes pokeball-shake {
+  0% {
+      transform: rotate(0deg);
+  }
+  33% {
+      transform: rotate(20deg);
+  }
+  66% {
+      transform: rotate(-20deg);
+  }
+  100% {
+      transform: rotate(0deg);
+  }
+}
+
+
+
+

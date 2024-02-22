@@ -13,7 +13,7 @@ interface Pokemon {
 class PokemonService {
   static async getPokemons(): Promise<Pokemon[]> {
     try {
-      const response = await axios.get('https://pokeapi.co/api/v2/pokemon?limit=100&offset=0&language=fr');
+      const response = await axios.get('https://pokeapi.co/api/v2/pokemon?limit=151&offset=0&language=fr');
       const fetchedPokemons = await Promise.all(response.data.results.map(async (pokemon: any) => {
         const detailsResponse = await axios.get(pokemon.url);
         return PokemonService.mapPokemon(detailsResponse.data);
@@ -74,7 +74,7 @@ class PokemonService {
   static async searchPokemon(keyword: string): Promise<Pokemon[] | null> {
     try {
       // Récupérer la liste complète des Pokémon
-      const response = await axios.get('https://pokeapi.co/api/v2/pokemon?limit=100&offset=0&language=fr');
+      const response = await axios.get('https://pokeapi.co/api/v2/pokemon?limit=151&offset=0&language=fr');
       const pokemonList = response.data.results;
   
       // Filtrer les Pokémon dont le nom contient le mot-clé
